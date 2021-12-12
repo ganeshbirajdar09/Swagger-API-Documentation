@@ -6,6 +6,10 @@ const swaggerDocument = YAML.load("./swagger.yaml");
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.use(
+  express.json()
+); /**express please take care of json , in recent updates no need to have seperate body-parser variable */
+
 let courses = [
   {
     id: "11",
@@ -43,6 +47,12 @@ app.get("/api/v1/courses", (req, res) => {
 app.get("/api/v1/mycourse/:courseId", (req, res) => {
   const myCourse = courses.find((course) => course.id === req.params.courseId);
   res.send(myCourse);
+});
+
+app.post("/api/v1/addCourse", (req, res) => {
+  console.log(req.body);
+  courses.push(req.body);
+  res.send(true);
 });
 
 app.listen(4000, () => console.log("Server is up and running at 4000"));
