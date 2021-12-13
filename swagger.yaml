@@ -205,4 +205,25 @@ paths:
         400:
           description: Bad request
         500:
+  /courseupload:
+    post:
+      tags:
+        - String
+      summary: uploading course image
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: All good success
+
+        400:
+          description: Bad request
+        500:
           description: internal server error

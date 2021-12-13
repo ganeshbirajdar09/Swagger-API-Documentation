@@ -1,14 +1,17 @@
 const express = require("express");
+
 const app = express();
+
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./swagger.yaml");
+const fileUpload = require("express-fileupload");
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use(
   express.json()
 ); /**express please take care of json , in recent updates no need to have seperate body-parser variable */
+app.use(fileUpload());
 
 let courses = [
   {
@@ -60,6 +63,15 @@ app.get("/api/v1/coursequery", (req, res) => {
   let device = req.query.device;
 
   res.send({ location, device });
+});
+
+app.post("/api/v1/courseupload", (req, res) => {
+  const file = req.files.file;
+  let path = __dirname + "/images/" + Date.now() + ".jpg";
+
+  file.mv(path, (err) => {
+    res.send(true);
+  });
 });
 
 app.listen(4000, () => console.log("Server is up and running at 4000"));
