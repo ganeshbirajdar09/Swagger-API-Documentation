@@ -210,6 +210,9 @@ paths:
       tags:
         - String
       summary: uploading course image
+      parameters:
+        - in: headers
+          name: auth
       requestBody:
         content:
           multipart/form-data:
