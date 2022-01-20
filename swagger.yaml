@@ -1,11 +1,11 @@
 openapi: "3.0.0"
 info:
   title: learn express and swagger
-  description: LCO - a course segment for writing docs
+  description: writing api documentation using swagger-api
   versions: 1.1.0
   contact:
-    email: ganesh@google.com
-    url: "https://lco.dev"
+    email: ganesh.birajdar.1930@gmail.com
+    url: "https://github.com/ganeshbirajdar09"
 
 # servers:
 #   - url: "https://localhost:4000/api/v1"
