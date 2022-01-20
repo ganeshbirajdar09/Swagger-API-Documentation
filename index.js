@@ -7,7 +7,7 @@ const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./swagger.yaml");
 const fileUpload = require("express-fileupload");
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(
   express.json()
 ); /**express please take care of json , in recent updates no need to have seperate body-parser variable */
@@ -31,9 +31,9 @@ let courses = [
   },
 ];
 
-app.get("/", (req, res) => {
-  res.send("Hello from LCO");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello from Ganesh");
+// });
 
 app.get("/api/v1/lco", (req, res) => {
   res.send("Hello from LCO docs");
@@ -68,6 +68,7 @@ app.get("/api/v1/coursequery", (req, res) => {
 app.post("/api/v1/courseupload", (req, res) => {
   console.log(req.headers);
   const file = req.files.file;
+  console.log(file);
   let path = __dirname + "/images/" + Date.now() + ".jpg";
 
   file.mv(path, (err) => {

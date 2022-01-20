@@ -1,6 +1,6 @@
 openapi: "3.0.0"
 info:
-  title: learn express and swagger - LearnCodeOnline
+  title: learn express and swagger
   description: LCO - a course segment for writing docs
   versions: 1.1.0
   contact:
